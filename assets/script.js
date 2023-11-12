@@ -7,7 +7,7 @@ let listItems = []
 
 function addTask() {
     listItems.push({
-        task: input.vale,
+        task: input.value,
         status: false
     })
 
@@ -32,11 +32,15 @@ function viewTask() {
     })
 
     allTasks.innerHTML = newLi
+
+    localStorage.setItem('list', JSON.stringify(listItems))
     
 }
 
 function checked(index) {
     listItems[index].status = !listItems[index].status
+
+    viewTask()
 }
 
 function delItem(index) {
@@ -45,8 +49,15 @@ function delItem(index) {
     viewTask()
 }
 
+function rechargeTasks() {
+    const LStasks = localStorage.getItem('list')
+
+    if(LStasks) {
+        listItems = JSON.parse(LStasks)
+    }
+
+    viewTask()
+}
+
+rechargeTasks()
 button.addEventListener('click', addTask)
-
-
-
-
