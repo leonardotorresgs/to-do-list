@@ -16,7 +16,8 @@ body {
 
 .container {
     background-color: transparent;
-    width: 500px;
+    max-width: 500px;
+    min-width: 100px;
     border-radius: 10px;
     padding: 20px;
     margin: 100px auto 0;
